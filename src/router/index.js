@@ -3,7 +3,7 @@ import {Route,Routes,Navigate} from 'react-router-dom'
 
 import Home from '../components/home'
 import About1 from '../components/about1'
-import About2 from '../components/about2'
+// import About2 from '../components/about2'
 import About from '../components/about'
 import Login from '../components/login'
 
@@ -22,10 +22,11 @@ export default function RouterConfig() {
             {/* 嵌套路由 */}
             <Route path='/about'   element={<About/>}>
               {/* index  用于匹配父级路径  当路径是/about 的时候，展示about2组件 */}
-              <Route index  element={<About2/>}/>
+              <Route index  element={lazyLoad('about2')}/>
+              {/* <Route index  element={<About2/>}/> */}
                {/* <Route path='/about/about1' element={<About1/>}/> */}
-               <Route path='about1'  element={<About1/>}/>
-               <Route path='about2'  element={<About2/>}/>
+               {/* <Route path='about1'  element={<About1/>}/>
+               <Route path='about2'  element={<About2/>}/> */}
                {/* 动态路由传参 */}
                {/* <Route path='about2/:id'  element={<About2/>}/> */}
               </Route>
@@ -37,4 +38,16 @@ export default function RouterConfig() {
         </Routes>
     </div>
   )
+}
+
+
+const lazyLoad = (path)=>{
+  const Com = React.lazy(()=>import(`../components/${path}`))
+ return (
+
+  <React.Suspense fallback={<span>加载中。。。。。</span>}>
+
+    <Com/>
+  </React.Suspense>
+ )
 }
