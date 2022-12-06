@@ -1,5 +1,5 @@
 import './App.css';
-import RouterConfig from './router'
+import RouterConfig from './router/index2'
 import Tabbar from './components/tabbar';
 function App() {
   return (

@@ -6,7 +6,6 @@ import About1 from '../components/about1'
 // import About2 from '../components/about2'
 import About from '../components/about'
 import Login from '../components/login'
-
 import Redirect from '../components/redirect'
 import RouterAuth from '../components/routerAuth'
 export default function RouterConfig() {
